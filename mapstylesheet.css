@@ -135,7 +135,7 @@ div#tabs div a {
 #resource-assistance-form {
   padding: 50px;
 }
-input[type=button], .button {
+input[type=button], .mbutton {
 	background-color:#4884ed;
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
@@ -148,10 +148,10 @@ input[type=button], .button {
     border: none;
     outline: none;
 }
-input[type=button]:hover, .button:hover {
+input[type=button]:hover, .mbutton:hover {
 	background-color:#476e9e;
 }
-input[type=button]:active, .button:active {
+input[type=button]:active, .mbutton:active {
 	position:relative;
 	top:1px;
 }
