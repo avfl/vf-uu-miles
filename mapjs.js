@@ -91,9 +91,9 @@ function initializeMap() {
     });
 }
 
-function displayMarkersByCategory(data) {
-  var data = data.data;
-  var categoryId = data.categoryId;
+function displayMarkersByCategory(result) {
+  var data = result.data;
+  var categoryId = result.categoryId;
   var cmarkers = setMarkersData(data, categoryId);
   mc = new MarkerClusterer(map, markers);
   jQuery('#loading').fadeOut();
