@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
   initializeMap();
   
   
-  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { displayMarkersByCategory(result); })
+  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { console.log(result.categoryId); displayMarkersByCategory(result); })
   .done(function() {
     console.log( "second success" );
   })
