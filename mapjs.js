@@ -9,13 +9,13 @@ $(function() { console.log('hi');
       $('#loading').fadeIn();
       clearMarkers();
       clearClusters();
-      $.getJSON( ""https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=" + categoryId + "&prefix=?"",displayMarkersByCategory);
+      $.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=" + categoryId + "&prefix=?",displayMarkersByCategory);
       $('#tabs div').removeClass('active');
       $(el).parent().addClass('active');
     });
   $('#g2').parent().addClass('active');
   initializeMap();
-  $.getJSON( ""https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?"",displayMarkersByCategory)
+  $.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?",displayMarkersByCategory)
   $('.close-button').click(function() {
       $(this).parent().fadeOut();
       $('html,body').animate({scrollTop: $('#outer-panel').offset().top}, 600);
