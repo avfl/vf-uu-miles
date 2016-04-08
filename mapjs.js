@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
     });
   $('#g2').parent().addClass('active');
   initializeMap();
-  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?", function (data) { console.log(data[0]); displayMarkersByCategory(data, 2); } );
+  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?&callback=?", function (data) { console.log(data[0]); displayMarkersByCategory(data, 2); } );
   $('.close-button').click(function() {
       $(this).parent().fadeOut();
       $('html,body').animate({scrollTop: $('#outer-panel').offset().top}, 600);
