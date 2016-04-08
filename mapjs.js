@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
     });
   $('#g2').parent().addClass('active');
   initializeMap();
-  $.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?",displayMarkersByCategory)
+  $.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?",displayMarkersByCategory(data, 2));
   $('.close-button').click(function() {
       $(this).parent().fadeOut();
       $('html,body').animate({scrollTop: $('#outer-panel').offset().top}, 600);
@@ -78,9 +78,9 @@ function initializeMap() {
     });
 }
 
-function displayMarkersByCategory(dataArr) {
-  var data = JSON.parse(dataArr[0]).data;
-  var categoryId = dataArr[1];
+function displayMarkersByCategory(data, categoryId) {
+  //var data = JSON.parse(dataArr[0]).data;
+  //var categoryId = dataArr[1];
   var cmarkers = setMarkersData(data, categoryId);
   mc = new MarkerClusterer(map, markers);
   jQuery('#loading').fadeOut();
