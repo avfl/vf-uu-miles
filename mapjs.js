@@ -151,19 +151,18 @@ function setMarkersData(data, categoryId) {
         assistance = ' <i class="fa fa-life-ring" style="color:#4885ed;font-weight:bold;"></i><br/><span style="font-size:0.75em;font-weight:normal;display:none;">accepts direct assistance requests as part of<br/>Veterans Florida statewide referral network</span> ';
         
     if (categoryId) {
-      var categoryId = parseInt(categoryId);
       var size = new google.maps.Size(22,22);
-      if (categoryId == 9) {
+      if (categoryId == '9') {
         icon = {
           url: 'http://www.veteransflorida.org/wp-content/uploads/2016/03/ic_nature_people_black_24dp_1x.png',
           scaledSize: size
         }
-      } else if (categoryId == 2) {
+      } else if (categoryId == '2') {
         icon = {
           url: 'http://www.veteransflorida.org/wp-content/uploads/2016/03/ic_business_black_24dp_1x.png',
           scaledSize: size
         }
-      } else if (categoryId == 1) {
+      } else if (categoryId == '1') {
         icon = {
           url: 'http://www.veteransflorida.org/wp-content/uploads/2016/03/ic_school_black_24dp_1x.png',
           scaledSize: size
