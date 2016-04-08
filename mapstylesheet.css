@@ -188,7 +188,7 @@ input[type=button]:active, .mbutton:active {
   display: inline-block;
 }
 #needassist-top:active #get-assist-top-tooltip {
-  top: 66px;
+  top: 65px;
 }
 #needassist-entity {
   float: right;
