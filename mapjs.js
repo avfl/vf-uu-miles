@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
   initializeMap();
   
   
-  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { console.log('hi'); console.log(result.categoryId); console.log(result.data); } )
+  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { displayMarkersByCategory(result) } )
   .done(function() {
     console.log( "second success" );
   })
@@ -91,9 +91,9 @@ function initializeMap() {
     });
 }
 
-function displayMarkersByCategory(data, categoryId) {
-  var data = JSON.parse(data);
-  //var categoryId = dataArr[1];
+function displayMarkersByCategory(data) {
+  var data = data.data;
+  var categoryId = data.categoryId;
   var cmarkers = setMarkersData(data, categoryId);
   mc = new MarkerClusterer(map, markers);
   jQuery('#loading').fadeOut();
