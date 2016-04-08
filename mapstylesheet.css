@@ -197,4 +197,9 @@ input[type=button]:active, .mbutton:active {
   float: right;
   margin-right: 20px;
 }
+.uniteus_assistance_request textarea, .uniteus_assistance_request select, 
+.uniteus_assistance_request input, .uniteus_signup input, .uniteus_signup select, 
+.uniteus_contact_us input {
+		padding: 2px 5px !important;
+}
 </style>
