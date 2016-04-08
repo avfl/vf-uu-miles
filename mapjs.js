@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
   $('#needassist-entity').click(showWidget);
   /*
   $('#entity-display-close-button').click(function(){
-    if (map.getZoom() > 7) {
+    if (map.getZoom() > 6) {
         $('#needassist-top').fadeOut();
       } else {
         $('#needassist-top').fadeIn();
@@ -51,7 +51,7 @@ function showWidget() {
 function initializeMap() {
   var center = new google.maps.LatLng(27.992596, -82.7796287);
   var options = {
-    zoom: 7,
+    zoom: 6,
     center: center,
     mapTypeControl: false,
     mapTypeId: google.maps.MapTypeId.TERRAIN
@@ -61,12 +61,12 @@ function initializeMap() {
   //map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('entity-info'));
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('zoom-out'));
   jQuery('#zoom-out').click(function() {
-      map.setZoom(7);
+      map.setZoom(6);
       map.setCenter(center);
       jQuery('#entity-display-close-button').click();
     });
   map.addListener('zoom_changed', function() {
-      if (map.getZoom() > 7) {
+      if (map.getZoom() > 6) {
         jQuery('#zoom-out').fadeIn();
         //jQuery('#needassist-top').fadeOut();
       } else {
