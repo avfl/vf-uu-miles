@@ -105,8 +105,8 @@ function loadMoreInfo(el) {
   //jQuery('#needassist-top').fadeOut();
   var fetchId = el.getAttribute('data-id');
   console.log(fetchId);
-  $.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?fetchId=" + fetchId + "&callback=?&prefix=?", function (result) { displayEntityInfo(result); });
-  google.script.run.withSuccessHandler(displayEntityInfo).getEntityData(fetchId);
+  jQuery.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?fetchId=" + fetchId + "&callback=?&prefix=?", function (result) { displayEntityInfo(result); });
+  //google.script.run.withSuccessHandler(displayEntityInfo).getEntityData(fetchId);
 }
 function displayEntityInfo(result) {
   var data = result;
