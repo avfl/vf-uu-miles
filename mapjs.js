@@ -16,7 +16,20 @@ jQuery(document).ready(function($) {
     });
   $('#g2').parent().addClass('active');
   initializeMap();
-  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&prefix=?&callback=?", function (data) { console.log(data); displayMarkersByCategory(data, 2); } );
+  
+  
+  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (data) { console.log('hi'); console.log(data); } )
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function(error) {
+    console.log( "error" + JSON.stringify(error) );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+  
+  
   $('.close-button').click(function() {
       $(this).parent().fadeOut();
       $('html,body').animate({scrollTop: $('#outer-panel').offset().top}, 600);
