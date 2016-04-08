@@ -43,11 +43,11 @@ jQuery(document).ready(function($) {
 
 
 function showWidget() {
-  $('#resource-assistance-form').html('');
+  jQuery('#resource-assistance-form').html('');
   var options = [];
   options['sel'] = '#resource-assistance-form';
   window.Uniteus.assistanceRequestWidget(options);
-  setTimeout(function(){ $('#resource-assistance-form-container').fadeIn(); $('html,body').animate({scrollTop: $('#outer-panel').offset().top}, 600); }, 1000);
+  setTimeout(function(){ jQuery('#resource-assistance-form-container').fadeIn(); jQuery('html,body').animate({scrollTop: jQuery('#outer-panel').offset().top}, 600); }, 1000);
 }
 
 function initializeMap() {
@@ -62,18 +62,18 @@ function initializeMap() {
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('loading'));
   //map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('entity-info'));
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('zoom-out'));
-  $('#zoom-out').click(function() {
+  jQuery('#zoom-out').click(function() {
       map.setZoom(7);
       map.setCenter(center);
-      $('#entity-display-close-button').click();
+      jQuery('#entity-display-close-button').click();
     });
   map.addListener('zoom_changed', function() {
       if (map.getZoom() > 7) {
-        $('#zoom-out').fadeIn();
-        //$('#needassist-top').fadeOut();
+        jQuery('#zoom-out').fadeIn();
+        //jQuery('#needassist-top').fadeOut();
       } else {
-        $('#zoom-out').fadeOut();
-        //$('#needassist-top').fadeIn();
+        jQuery('#zoom-out').fadeOut();
+        //jQuery('#needassist-top').fadeIn();
       }
     });
 }
@@ -83,13 +83,13 @@ function displayMarkersByCategory(dataArr) {
   var categoryId = dataArr[1];
   var cmarkers = setMarkersData(data, categoryId);
   mc = new MarkerClusterer(map, markers);
-  $('#loading').fadeOut();
-  $('.info-window-view-more').click(loadMoreInfo);
+  jQuery('#loading').fadeOut();
+  jQuery('.info-window-view-more').click(loadMoreInfo);
 }
 
 function loadMoreInfo(el) {
-  $('#entity-info').fadeOut();
-  //$('#needassist-top').fadeOut();
+  jQuery('#entity-info').fadeOut();
+  //jQuery('#needassist-top').fadeOut();
   var fetchId = el.getAttribute('data-id');
   console.log(fetchId);
   google.script.run.withSuccessHandler(displayEntityInfo).getEntityData(fetchId);
@@ -98,29 +98,29 @@ function displayEntityInfo(data) {
   var data = JSON.parse(data);
   console.log(data);
   if (data.accepts_assistance_requests == true || data.accepts_assistance_requests == 'true') {
-    $('#needassist-entity').fadeIn();
+    jQuery('#needassist-entity').fadeIn();
   } else {
-    $('#needassist-entity').css('display','none');
+    jQuery('#needassist-entity').css('display','none');
   }
-  $('#entity-name, #entity-description, #entity-avatar, #entity-address, #entity-website').empty();
-  $('#entity-name').html(data.name);
-  $('#entity-address').html(data.address.address_line1 + '<br/>' + data.address.city + ', ' + data.address.state + ' ' + data.address.zip);
-  $('#entity-website').html('<a href="' + data.website + '" target="_blank">' + data.website.replace('http://','') + '</a>');
+  jQuery('#entity-name, #entity-description, #entity-avatar, #entity-address, #entity-website').empty();
+  jQuery('#entity-name').html(data.name);
+  jQuery('#entity-address').html(data.address.address_line1 + '<br/>' + data.address.city + ', ' + data.address.state + ' ' + data.address.zip);
+  jQuery('#entity-website').html('<a href="' + data.website + '" target="_blank">' + data.website.replace('http://','') + '</a>');
   if (data.description && data.description != null) {
-    $('#entity-description').html(data.description.replace(/\n/g,'<br/>'));
+    jQuery('#entity-description').html(data.description.replace(/\n/g,'<br/>'));
   }
   if (data.avatar_url && data.avatar_url != null && data.avatar_url != 'holder') {
-    $('#entity-avatar').html('<img src="' + data.avatar_url + '"/>');
+    jQuery('#entity-avatar').html('<img src="' + data.avatar_url + '"/>');
   }
   
   var categories = 'Best Categories for Assistance: <br/>';
   for (var i in data.categories) {
     categories += data.categories[i].name.toTitleCase() + ' &nbsp;&nbsp;';
   }
-  $('#entity-categories').html(categories);
+  jQuery('#entity-categories').html(categories);
   
-  $('#entity-info').fadeIn();
-  $('html,body').animate({scrollTop: $('#entity-info').offset().top}, 600);
+  jQuery('#entity-info').fadeIn();
+  jQuery('html,body').animate({scrollTop: jQuery('#entity-info').offset().top}, 600);
   
 }
   
@@ -200,7 +200,7 @@ function setMarkersData(data, categoryId) {
       });
       
     infowindow.addListener('closeclick',function(){
-        $('#entity-display-close-button').click();
+        jQuery('#entity-display-close-button').click();
       });
       
     markers.push(marker);
