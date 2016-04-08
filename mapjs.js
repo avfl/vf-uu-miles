@@ -1,4 +1,3 @@
-
 // markerCluster = new MarkerClusterer(map, markers, {"minimumClusterSize":5,"gridSize":30, "styles":styles});
 var map, markers = [], mc;
 jQuery(document).ready(function($) {
@@ -15,26 +14,12 @@ jQuery(document).ready(function($) {
       $(el).parent().addClass('active');
     });
   $('#g2').parent().addClass('active');
-  initializeMap();
-  
-  
-  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { displayMarkersByCategory(result); })
-  .done(function() {
-    console.log( "second success" );
-  })
-  .fail(function(error) {
-    console.log( "error" + JSON.stringify(error) );
-  })
-  .always(function() {
-    console.log( "complete" );
-  });
-  
+  initializeMap(); $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { displayMarkersByCategory(result); });
   
   $('.close-button').click(function() {
       $(this).parent().fadeOut();
       $('html,body').animate({scrollTop: $('#outer-panel').offset().top}, 600);
     });
-    
     
   $('#needassist-top').click(showWidget);
   $('#needassist-entity').click(showWidget);
@@ -117,9 +102,9 @@ function displayEntityInfo(result) {
     jQuery('#needassist-entity').css('display','none');
   }
   jQuery('#entity-name, #entity-description, #entity-avatar, #entity-address, #entity-website').empty();
-  jQuery('#entity-name').html(data.name);
+  jQuery('#entity-name').html('<h3>' + data.name + '</h3>');
   jQuery('#entity-address').html(data.address.address_line1 + '<br/>' + data.address.city + ', ' + data.address.state + ' ' + data.address.zip);
-  jQuery('#entity-website').html('<a href="' + data.website + '" target="_blank">' + data.website.replace('http://','') + '</a>');
+  jQuery('#entity-website').html('<a href="' + data.website + '" target="_blank">View Website</a>');
   if (data.description && data.description != null) {
     jQuery('#entity-description').html(data.description.replace(/\n/g,'<br/>'));
   }
@@ -140,7 +125,7 @@ function displayEntityInfo(result) {
   
   
 function setMarkersData(data, categoryId) {
-  var infowindow = new google.maps.InfoWindow({maxWidth: 275});
+  var infowindow = new google.maps.InfoWindow({maxWidth: 325});
   for (var i = 0; i < data.length; i ++) {
     var mp = data[i],
         icon = {
@@ -150,7 +135,6 @@ function setMarkersData(data, categoryId) {
           scale: 4
         },
         assistance = ' <i class="fa fa-life-ring" style="color:#4885ed;font-weight:bold;"></i><br/><span style="font-size:0.75em;font-weight:normal;display:none;">accepts direct assistance requests as part of<br/>Veterans Florida statewide referral network</span> ';
-        
     if (categoryId) {
       var size = new google.maps.Size(22,22);
       if (categoryId == '9') {
@@ -173,18 +157,12 @@ function setMarkersData(data, categoryId) {
     if (!mp.accepts_assistance_requests || mp.accepts_assistance_requests == false || mp.accepts_assistance_requests == 'false') {
       assistance = '';
     }
-    
     var bgDiv = '<div></div>';
     if (mp.avatar_url && mp.avatar_url != null && mp.avatar_url != 'holder') {
       bgDiv = '<div class="mp-info-window-bgdiv" style="background: #FFFFFF url(' + mp.avatar_url + ') center no-repeat;background-size:100%;"></div>'
     }
-    
     var html = bgDiv + '<div class="mp-info-window"><h3>' + mp.name + ' ' + assistance + '</h3><br/><span class="info-window-view-more" data-id="' + mp.id + '" onclick="loadMoreInfo(this);">View More</span></div>';
-    
-    
     var latLng = new google.maps.LatLng(mp.lat, mp.lng);
-    
-    
     var marker = new google.maps.Marker({
       map: map,
       title: mp.name,
@@ -193,7 +171,6 @@ function setMarkersData(data, categoryId) {
       cursor: 'pointer',
       position: latLng
     });
-    
     /*
     var marker = new MarkerWithLabel({
       position: latLng,
@@ -207,12 +184,10 @@ function setMarkersData(data, categoryId) {
       labelInBackground: true
     });
     */
-      
     marker.addListener('click', function() {
         infowindow.setContent(this.html);
         infowindow.open(map, this);
       });
-      
     infowindow.addListener('closeclick',function(){
         jQuery('#entity-display-close-button').click();
       });
@@ -235,8 +210,6 @@ function clearClusters() {
     return;
   }
 }
-
 String.prototype.toTitleCase = function () {
     return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
-
