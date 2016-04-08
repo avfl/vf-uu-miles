@@ -79,7 +79,7 @@ function initializeMap() {
 }
 
 function displayMarkersByCategory(data, categoryId) {
-  //var data = JSON.parse(dataArr[0]).data;
+  var data = JSON.parse(data);
   //var categoryId = dataArr[1];
   var cmarkers = setMarkersData(data, categoryId);
   mc = new MarkerClusterer(map, markers);
