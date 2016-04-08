@@ -187,10 +187,11 @@ function setMarkersData(data, categoryId) {
     marker.addListener('click', function() {
         infowindow.setContent(this.html);
         infowindow.open(map, this);
+        infowindow.addListener('closeclick',function(){
+          jQuery('#entity-display-close-button').click();
+        });
       });
-    infowindow.addListener('closeclick',function(){
-        jQuery('#entity-display-close-button').click();
-      });
+    
       
     markers.push(marker);
   }
