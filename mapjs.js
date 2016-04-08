@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
   initializeMap();
   
   
-  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { console.log(result.categoryId); displayMarkersByCategory(result); })
+  $.getJSON("https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?categoryId=2&callback=?&prefix=?", function (result) { displayMarkersByCategory(result); })
   .done(function() {
     console.log( "second success" );
   })
@@ -105,10 +105,11 @@ function loadMoreInfo(el) {
   //jQuery('#needassist-top').fadeOut();
   var fetchId = el.getAttribute('data-id');
   console.log(fetchId);
+  $.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?fetchId=" + fetchId + "&callback=?&prefix=?", function (result) { displayEntityInfo(result); });
   google.script.run.withSuccessHandler(displayEntityInfo).getEntityData(fetchId);
 }
-function displayEntityInfo(data) {
-  var data = JSON.parse(data);
+function displayEntityInfo(result) {
+  var data = result;
   console.log(data);
   if (data.accepts_assistance_requests == true || data.accepts_assistance_requests == 'true') {
     jQuery('#needassist-entity').fadeIn();
