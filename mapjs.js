@@ -1,7 +1,6 @@
 // markerCluster = new MarkerClusterer(map, markers, {"minimumClusterSize":5,"gridSize":30, "styles":styles});
 var map, markers = [], mc;
 jQuery(document).ready(function($) {
-  console.log('hi');
   $('#tabs a').click(function(e) {
       e.preventDefault();
       var el = $(this);
@@ -89,13 +88,10 @@ function loadMoreInfo(el) {
   jQuery('#entity-info').fadeOut();
   //jQuery('#needassist-top').fadeOut();
   var fetchId = el.getAttribute('data-id');
-  console.log(fetchId);
   jQuery.getJSON( "https://script.google.com/macros/s/AKfycbwOTZO_ZuBza0T_xx9bQWl8NSTcLXTbLd8uzKw3kdo1Q9asKyZL/exec?fetchId=" + fetchId + "&callback=?&prefix=?", function (result) { displayEntityInfo(result); });
-  //google.script.run.withSuccessHandler(displayEntityInfo).getEntityData(fetchId);
 }
 function displayEntityInfo(result) {
   var data = result;
-  console.log(data);
   if (data.accepts_assistance_requests == true || data.accepts_assistance_requests == 'true') {
     jQuery('#needassist-entity').fadeIn();
   } else {
