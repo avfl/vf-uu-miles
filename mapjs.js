@@ -1,7 +1,8 @@
 
 // markerCluster = new MarkerClusterer(map, markers, {"minimumClusterSize":5,"gridSize":30, "styles":styles});
 var map, markers = [], mc;
-$(function() { console.log('hi');
+jQuery(document).ready(function($) {
+  console.log('hi');
   $('#tabs a').click(function(e) {
       e.preventDefault();
       var el = $(this);
