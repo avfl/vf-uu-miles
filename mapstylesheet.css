@@ -1,9 +1,13 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+@import url(https://uniteus.com/assets/uniteus_frontend/widget-9ee2b3ff822f262a5e9910ca84443c481051cd054a0fe44ec7f8f9e26a189bf5.css);
 <style>
 html, body {
   font-family: 'Roboto', sans-serif;
 }
 #outer-panel {
   width: 100%;
+  margin-bottom: 150px;
 }
 #inner-panel {
   width: 960px;
@@ -97,7 +101,6 @@ div#tabs div a {
   width: 100%;
 }
 #entity-name {
-  font-size: 1.5em;
   max-width: 700px;
   display: inline-block;
 }
@@ -109,7 +112,7 @@ div#tabs div a {
   line-height: 1.5 !important;
 }
 .mp-info-window {
-  width: 270px;
+  width: 300px;
   background: transparent;
   position: relative;
 }
